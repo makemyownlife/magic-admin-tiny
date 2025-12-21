@@ -115,7 +115,7 @@
 <script lang="ts" setup>
 import { PropType } from 'vue'
 import * as CodegenApi from '@/api/infra/codegen'
-import * as DictDataApi from '@/api/system/dict/dict.type'
+import * as DictTypeApi from '@/api/system/dict/dict.type'
 
 defineOptions({ name: 'InfraCodegenColumInfoForm' })
 
@@ -130,9 +130,9 @@ const formData = ref<CodegenApi.CodegenColumnVO[]>([])
 const tableHeight = document.documentElement.scrollHeight - 350 + 'px'
 
 /** 查询字典下拉列表 */
-const dictOptions = ref<DictDataApi.DictTypeVO[]>()
+const dictOptions = ref<DictTypeApi.DictTypeVO[]>()
 const getDictOptions = async () => {
-  dictOptions.value = await DictDataApi.getSimpleDictTypeList()
+  dictOptions.value = await DictTypeApi.getSimpleDictTypeList()
 }
 
 watch(
