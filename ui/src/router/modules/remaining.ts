@@ -50,7 +50,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
       noTagsView: true
     }
   },
-  {
+  {    
     path: '/',
     component: Layout,
     redirect: '/index',
@@ -66,6 +66,35 @@ const remainingRouter: AppRouteRecordRaw[] = [
           icon: 'ep:home-filled',
           noCache: false,
           affix: true
+        }
+      }
+    ]
+  },
+  {
+    path: '/model',
+    component: Layout,
+    name: 'ModelManagement',
+    meta: {
+      title: '模型管理',
+      icon: 'ep:collection'
+    },
+    children: [
+      {
+        path: 'list',
+        component: () => import('@/views/Model/List.vue'),
+        name: 'ModelList',
+        meta: {
+          title: '模型列表',
+          noCache: false
+        }
+      },
+      {
+        path: 'create',
+        component: () => import('@/views/Model/Create.vue'),
+        name: 'ModelCreate',
+        meta: {
+          title: '创建模型',
+          noCache: true
         }
       }
     ]
