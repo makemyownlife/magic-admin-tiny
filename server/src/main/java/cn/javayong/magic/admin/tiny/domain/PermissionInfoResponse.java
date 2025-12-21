@@ -1,4 +1,4 @@
-package cn.javayong.magic.admin.tiny.model;
+package cn.javayong.magic.admin.tiny.domain;
 
 import java.util.List;
 import java.util.Set;

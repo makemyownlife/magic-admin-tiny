@@ -2,7 +2,7 @@
   <div class="model-list-container">
     <h2>模型列表</h2>
     <el-card class="mb-4">
-      <el-button type="primary" @click="$router.push('/model/create')">创建模型</el-button>
+      <el-button type="primary" @click="$router.push('/domain/create')">创建模型</el-button>
     </el-card>
     <el-card>
       <el-table :data="modelList" style="width: 100%">
@@ -46,7 +46,7 @@ const modelList = ref([
 const handleEdit = (row: any) => {
   ElMessage.success(`编辑模型：${row.name}`)
   // 实际开发中可以跳转到编辑页面
-  // router.push(`/model/edit/${row.id}`)
+  // router.push(`/domain/edit/${row.id}`)
 }
 
 // 删除模型

@@ -1,9 +1,8 @@
 package cn.javayong.magic.admin.tiny.controller;
 
-import cn.javayong.magic.admin.tiny.model.LoginRequest;
-import cn.javayong.magic.admin.tiny.model.LoginResponse;
-import cn.javayong.magic.admin.tiny.model.PermissionInfoResponse;
-import org.springframework.http.HttpStatus;
+import cn.javayong.magic.admin.tiny.domain.LoginRequest;
+import cn.javayong.magic.admin.tiny.domain.LoginResponse;
+import cn.javayong.magic.admin.tiny.domain.PermissionInfoResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

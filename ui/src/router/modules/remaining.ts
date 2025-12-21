@@ -50,7 +50,7 @@ const remainingRouter: AppRouteRecordRaw[] = [
       noTagsView: true
     }
   },
-  {    
+  {
     path: '/',
     component: Layout,
     redirect: '/index',

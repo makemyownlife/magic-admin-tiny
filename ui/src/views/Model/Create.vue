@@ -61,7 +61,7 @@ const handleSubmit = () => {
   console.log('模型数据:', modelForm.value)
   
   // 跳转到模型列表页面
-  router.push('/model/list')
+  router.push('/domain/list')
 }
 </script>
 
