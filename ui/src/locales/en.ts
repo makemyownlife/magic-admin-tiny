@@ -309,6 +309,8 @@ export default {
     test: 'Test',
     typeCreate: 'Dict Type Create',
     typeUpdate: 'Dict Type Eidt',
+    dataCreate: 'Dict Data Create',
+    dataUpdate: 'Dict Data Eidt',
     fileUpload: 'File Upload'
   },
   dialog: {

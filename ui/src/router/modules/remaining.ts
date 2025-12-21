@@ -121,7 +121,29 @@ const remainingRouter: AppRouteRecordRaw[] = [
       }
     ]
   },
-
+  {
+    path: '/dict',
+    component: Layout,
+    name: 'dict',
+    meta: {
+      hidden: true
+    },
+    children: [
+      {
+        path: 'type/data/:dictType',
+        component: () => import('@/views/system/dict/data/index.vue'),
+        name: 'SystemDictData',
+        meta: {
+          title: '字典数据',
+          noCache: true,
+          hidden: true,
+          canTo: true,
+          icon: '',
+          activeMenu: '/system/dict'
+        }
+      }
+    ]
+  },
 
   {
     path: '/codegen',
