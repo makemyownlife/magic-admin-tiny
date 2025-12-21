@@ -169,29 +169,6 @@ const remainingRouter: AppRouteRecordRaw[] = [
     ]
   },
   {
-    path: '/job',
-    component: Layout,
-    name: 'JobL',
-    meta: {
-      hidden: true
-    },
-    children: [
-      {
-        path: 'job-log',
-        component: () => import('@/views/infra/job/logger/index.vue'),
-        name: 'InfraJobLog',
-        meta: {
-          noCache: true,
-          hidden: true,
-          canTo: true,
-          icon: 'ep:edit',
-          title: '调度日志',
-          activeMenu: 'infra/job/index'
-        }
-      }
-    ]
-  },
-  {
     path: '/login',
     component: () => import('@/views/Login/Login.vue'),
     name: 'Login',
@@ -208,16 +185,6 @@ const remainingRouter: AppRouteRecordRaw[] = [
     meta: {
       hidden: true,
       title: t('router.login'),
-      noTagsView: true
-    }
-  },
-  {
-    path: '/social-login',
-    component: () => import('@/views/Login/SocialLogin.vue'),
-    name: 'SocialLogin',
-    meta: {
-      hidden: true,
-      title: t('router.socialLogin'),
       noTagsView: true
     }
   },
