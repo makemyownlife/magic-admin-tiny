@@ -78,10 +78,12 @@ service.interceptors.request.use(
 // response 拦截器
 service.interceptors.response.use(
   async (response: AxiosResponse<any>) => {
+    console.log('Response received:', response); // 调试日志
     let { data } = response
     const config = response.config
     if (!data) {
-      // 返回“[HTTP]请求没有返回值”;
+      // 返回“[HTTP]请求没有返回值”；
+      console.error('No data in response'); // 调试日志
       throw new Error()
     }
     const { t } = useI18n()
@@ -98,8 +100,10 @@ service.interceptors.response.use(
       data = await new Response(response.data).json()
     }
     const code = data.code || result_code
+    console.log('Response code:', code, 'Result code:', result_code); // 调试日志
     // 获取错误信息
     const msg = data.msg || errorCode[code] || errorCode['default']
+    console.log('Response message:', msg); // 调试日志
     if (ignoreMsgs.indexOf(msg) !== -1) {
       // 如果是忽略的错误码，直接返回 msg 异常
       return Promise.reject(msg)
@@ -158,7 +162,7 @@ service.interceptors.response.use(
           '<div>5 分钟搭建本地环境</div>'
       })
       return Promise.reject(new Error(msg))
-    } else if (code !== 200) {
+    } else if (code !== result_code) { // 修改这里，使用配置的 result_code 而不是硬编码的 200
       if (msg === '无效的刷新令牌') {
         // hard coding：忽略这个提示，直接登出
         console.log(msg)
