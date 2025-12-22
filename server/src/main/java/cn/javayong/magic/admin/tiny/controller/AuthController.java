@@ -3,6 +3,7 @@ package cn.javayong.magic.admin.tiny.controller;
 import cn.javayong.magic.admin.tiny.domain.LoginRequest;
 import cn.javayong.magic.admin.tiny.domain.LoginResponse;
 import cn.javayong.magic.admin.tiny.domain.PermissionInfoResponse;
+import com.alibaba.fastjson.JSON;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,21 +21,20 @@ public class AuthController {
      * 登录接口
      */
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
+    @ResponseBody
+    public String login(@RequestBody LoginRequest loginRequest) {
         // 模拟登录成功，返回accessToken和refreshToken
         LoginResponse response = new LoginResponse();
         response.setAccessToken("mock-access-token-" + UUID.randomUUID().toString());
         response.setRefreshToken("mock-refresh-token-" + UUID.randomUUID().toString());
-        
-        // 模拟用户信息
-        Map<String, Object> userInfo = new HashMap<>();
-        userInfo.put("id", 1L);
-        userInfo.put("avatar", "https://picsum.photos/200");
-        userInfo.put("nickname", "Admin");
-        userInfo.put("deptId", 1L);
-        response.setUserInfo(userInfo);
-        
-        return ResponseEntity.ok(response);
+        response.setExpiresTime(System.currentTimeMillis() + 3600 * 1000L);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("code", "0");
+        result.put("data", response);
+        result.put("msg", "");
+
+        return JSON.toJSONString(result);
     }
 
     /**
@@ -43,7 +43,7 @@ public class AuthController {
     @GetMapping("/get-permission-info")
     public ResponseEntity<PermissionInfoResponse> getPermissionInfo() {
         PermissionInfoResponse response = new PermissionInfoResponse();
-        
+
         // 模拟权限列表
         Set<String> permissions = new HashSet<>();
         permissions.add("system:user:list");
@@ -63,11 +63,11 @@ public class AuthController {
         permissions.add("system:dict:update");
         permissions.add("system:dict:delete");
         response.setPermissions(permissions);
-        
+
         // 模拟角色列表
         List<String> roles = Arrays.asList("admin");
         response.setRoles(roles);
-        
+
         // 模拟用户信息
         PermissionInfoResponse.UserInfo userInfo = new PermissionInfoResponse.UserInfo();
         userInfo.setId(1L);
@@ -75,10 +75,10 @@ public class AuthController {
         userInfo.setNickname("Admin");
         userInfo.setDeptId(1L);
         response.setUser(userInfo);
-        
+
         // 模拟菜单列表
         List<PermissionInfoResponse.Menu> menus = new ArrayList<>();
-        
+
         // 首页菜单
         PermissionInfoResponse.Menu homeMenu = new PermissionInfoResponse.Menu();
         homeMenu.setPath("/");
@@ -91,7 +91,7 @@ public class AuthController {
         homeMeta.setNoCache(false);
         homeMenu.setMeta(homeMeta);
         menus.add(homeMenu);
-        
+
         // 系统管理菜单
         PermissionInfoResponse.Menu systemMenu = new PermissionInfoResponse.Menu();
         systemMenu.setPath("/system");
@@ -104,7 +104,7 @@ public class AuthController {
         systemMeta.setNoCache(false);
         systemMenu.setMeta(systemMeta);
         menus.add(systemMenu);
-        
+
         // 用户管理子菜单
         PermissionInfoResponse.Menu userMenu = new PermissionInfoResponse.Menu();
         userMenu.setPath("/system/user");
@@ -117,7 +117,7 @@ public class AuthController {
         userMeta.setNoCache(false);
         userMenu.setMeta(userMeta);
         menus.add(userMenu);
-        
+
         // 角色管理子菜单
         PermissionInfoResponse.Menu roleMenu = new PermissionInfoResponse.Menu();
         roleMenu.setPath("/system/role");
@@ -130,7 +130,7 @@ public class AuthController {
         roleMeta.setNoCache(false);
         roleMenu.setMeta(roleMeta);
         menus.add(roleMenu);
-        
+
         // 菜单管理子菜单
         PermissionInfoResponse.Menu menuMenu = new PermissionInfoResponse.Menu();
         menuMenu.setPath("/system/menu");
@@ -143,7 +143,7 @@ public class AuthController {
         menuMeta.setNoCache(false);
         menuMenu.setMeta(menuMeta);
         menus.add(menuMenu);
-        
+
         // 字典管理子菜单
         PermissionInfoResponse.Menu dictMenu = new PermissionInfoResponse.Menu();
         dictMenu.setPath("/system/dict");
@@ -156,9 +156,9 @@ public class AuthController {
         dictMeta.setNoCache(false);
         dictMenu.setMeta(dictMeta);
         menus.add(dictMenu);
-        
+
         response.setMenus(menus);
-        
+
         return ResponseEntity.ok(response);
     }
 }

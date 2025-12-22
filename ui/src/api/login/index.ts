@@ -6,14 +6,10 @@ export interface SmsCodeVO {
   scene: number
 }
 
-export interface SmsLoginVO {
-  mobile: string
-  code: string
-}
-
 // 登录
 export const login = (data: UserLoginVO) => {
-  return request.post({ url: '/system/auth/login', data })
+  const res = request.post({ url: '/system/auth/login', data })
+  return res
 }
 
 // 注册
@@ -34,11 +30,6 @@ export const getInfo = () => {
 //获取登录验证码
 export const sendSmsCode = (data: SmsCodeVO) => {
   return request.post({ url: '/system/auth/send-sms-code', data })
-}
-
-// 短信验证码登录
-export const smsLogin = (data: SmsLoginVO) => {
-  return request.post({ url: '/system/auth/sms-login', data })
 }
 
 // 社交快捷登录，使用 code 授权码

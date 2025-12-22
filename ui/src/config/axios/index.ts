@@ -20,8 +20,19 @@ export default {
     return res.data as unknown as T
   },
   post: async <T = any>(option: any) => {
-    const res = await request({ method: 'POST', ...option })
-    return res.data as unknown as T
+    try {
+      const res = await request({ method: 'POST', ...option });
+      // 检查响应数据是否有效
+      if (res && res.data) {
+        return res.data as unknown as T;
+      } else {
+        throw new Error('Response data is invalid');
+      }
+    } catch (error) {
+      console.error('POST request failed:', error);
+      // 可以根据需要返回一个自定义错误，或者抛出异常
+      throw error; // 重新抛出错误，或者你可以返回自定义的错误对象
+    }
   },
   postOriginal: async (option: any) => {
     const res = await request({ method: 'POST', ...option })

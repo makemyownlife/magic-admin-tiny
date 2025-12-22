@@ -75,7 +75,7 @@ import { useAppStore } from '@/store/modules/app'
 import { ThemeSwitch } from '@/layout/components/ThemeSwitch'
 import { LocaleDropdown } from '@/layout/components/LocaleDropdown'
 
-import { LoginForm, MobileForm, QrCodeForm, RegisterForm, SSOLoginVue, ForgetPasswordForm } from './components'
+import { LoginForm, RegisterForm, SSOLoginVue, ForgetPasswordForm } from './components'
 
 defineOptions({ name: 'Login' })
 

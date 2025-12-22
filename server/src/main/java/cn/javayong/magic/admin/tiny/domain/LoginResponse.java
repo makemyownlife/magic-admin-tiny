@@ -1,14 +1,20 @@
 package cn.javayong.magic.admin.tiny.domain;
 
+import lombok.Data;
+
 import java.util.Map;
 
 /**
  * 登录响应模型
  */
+@Data
 public class LoginResponse {
     private String accessToken;
     private String refreshToken;
-    private Map<String, Object> userInfo;
+
+    private Long userId = 1L;
+
+    private Long expiresTime;
 
     // Getters and Setters
     public String getAccessToken() {
@@ -25,13 +31,5 @@ public class LoginResponse {
 
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
-    }
-
-    public Map<String, Object> getUserInfo() {
-        return userInfo;
-    }
-
-    public void setUserInfo(Map<String, Object> userInfo) {
-        this.userInfo = userInfo;
     }
 }

@@ -172,7 +172,6 @@ const init = () => {
   } else {
     text.value = explain.value
   }
-  getPictrue()
   nextTick(() => {
     let { imgHeight, imgWidth, barHeight, barWidth } = resetSize(proxy)
     setSize.imgHeight = imgHeight
@@ -350,7 +349,6 @@ const refresh = async () => {
   iconClass.value = 'icon-right'
   isEnd.value = false
 
-  await getPictrue()
   setTimeout(() => {
     transitionWidth.value = ''
     transitionLeft.value = ''
@@ -362,15 +360,6 @@ const refresh = async () => {
 const getPictrue = async () => {
   let data = {
     captchaType: captchaType.value
-  }
-  const res = await getCode(data)
-  if (res.repCode == '0000') {
-    backImgBase.value = res.repData.originalImageBase64
-    blockBackImgBase.value = res.repData.jigsawImageBase64
-    backToken.value = res.repData.token
-    secretKey.value = res.repData.secretKey
-  } else {
-    tipWords.value = res.repMsg
   }
 }
 </script>

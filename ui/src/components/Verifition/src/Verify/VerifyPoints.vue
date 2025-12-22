@@ -130,7 +130,7 @@ const init = () => {
   fontPos.splice(0, fontPos.length)
   checkPosArr.splice(0, checkPosArr.length)
   num.value = 1
-  getPictrue()
+ // getPictrue()
   nextTick(() => {
     let { imgHeight, imgWidth, barHeight, barWidth } = resetSize(proxy)
     setSize.imgHeight = imgHeight

@@ -208,13 +208,6 @@ const loginData = reactive({
   }
 })
 
-const socialList = [
-  { icon: 'ant-design:wechat-filled', type: 30 },
-  { icon: 'ant-design:dingtalk-circle-filled', type: 20 },
-  { icon: 'ant-design:github-filled', type: 0 },
-  { icon: 'ant-design:alipay-circle-filled', type: 0 }
-]
-
 // 获取验证码
 const getCode = async () => {
   // 情况一，未开启：则直接登录
@@ -276,20 +269,12 @@ const handleLogin = async (params: any) => {
     }
   } finally {
     loginLoading.value = false
-    loading.value.close()
+    if (loading.value) {
+      loading.value.close()
+    }
   }
 }
 
-// 社交登录
-watch(
-  () => currentRoute.value,
-  (route: RouteLocationNormalizedLoaded) => {
-    redirect.value = route?.query?.redirect as string
-  },
-  {
-    immediate: true
-  }
-)
 onMounted(() => {
   getLoginFormCache()
 })
