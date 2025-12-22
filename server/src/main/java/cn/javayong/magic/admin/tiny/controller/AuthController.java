@@ -41,27 +41,12 @@ public class AuthController {
      * 获取权限信息接口
      */
     @GetMapping("/get-permission-info")
-    public ResponseEntity<PermissionInfoResponse> getPermissionInfo() {
+    @ResponseBody
+    public String getPermissionInfo() {
         PermissionInfoResponse response = new PermissionInfoResponse();
 
         // 模拟权限列表
         Set<String> permissions = new HashSet<>();
-        permissions.add("system:user:list");
-        permissions.add("system:user:create");
-        permissions.add("system:user:update");
-        permissions.add("system:user:delete");
-        permissions.add("system:role:list");
-        permissions.add("system:role:create");
-        permissions.add("system:role:update");
-        permissions.add("system:role:delete");
-        permissions.add("system:menu:list");
-        permissions.add("system:menu:create");
-        permissions.add("system:menu:update");
-        permissions.add("system:menu:delete");
-        permissions.add("system:dict:list");
-        permissions.add("system:dict:create");
-        permissions.add("system:dict:update");
-        permissions.add("system:dict:delete");
         response.setPermissions(permissions);
 
         // 模拟角色列表
@@ -159,6 +144,12 @@ public class AuthController {
 
         response.setMenus(menus);
 
-        return ResponseEntity.ok(response);
+        // 封装成统一的响应格式
+        Map<String, Object> result = new HashMap<>();
+        result.put("code", "0");
+        result.put("data", response);
+        result.put("msg", "");
+
+        return JSON.toJSONString(result);
     }
 }
