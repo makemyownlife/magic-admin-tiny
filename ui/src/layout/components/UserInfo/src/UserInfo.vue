@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ElMessageBox } from 'element-plus'
 
-import avatarImg from '@/assets/imgs/avatar.gif'
+import avatarImg from '@/assets/imgs/logo.png' // 将默认头像改为logo.png
 import { useDesign } from '@/hooks/web/useDesign'
 import { useTagsViewStore } from '@/store/modules/tagsView'
 import { useUserStore } from '@/store/modules/user'
@@ -67,10 +67,11 @@ const toProfile = async () => {
     <template #dropdown>
       <ElDropdownMenu>
 
-        <ElDropdownItem>
+        <!-- 移除个人中心入口 -->
+        <!-- <ElDropdownItem>
           <Icon icon="ep:tools" />
           <div @click="toProfile">{{ t('common.profile') }}</div>
-        </ElDropdownItem>
+        </ElDropdownItem> -->
 
         <!--
         <ElDropdownItem>

@@ -280,7 +280,7 @@ declare module 'vue' {
     VerticalButtonGroup: typeof import('./../components/VerticalButtonGroup/index.vue')['default']
     Workflow: typeof import('./../views/ai/workflow/index.vue')['default']
     WorkflowDesign: typeof import('./../views/ai/workflow/form/WorkflowDesign.vue')['default']
-    Workspace: typeof import('./../../.idea/workspace.xml~')['default']
+    Workspace: typeof import('./../../.idea/workspace.xml')['default']
     'Workspace.xml': typeof import('./../../.idea/workspace.xml.tmp')['default']
     Write: typeof import('./../api/ai/write/index.ts')['default']
     XButton: typeof import('./../components/XButton/src/XButton.vue')['default']

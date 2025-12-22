@@ -99,28 +99,29 @@ const remainingRouter: AppRouteRecordRaw[] = [
       }
     ]
   },
-  {
-    path: '/user',
-    component: Layout,
-    name: 'UserInfo',
-    meta: {
-      hidden: true
-    },
-    children: [
-      {
-        path: 'profile',
-        component: () => import('@/views/Profile/Index.vue'),
-        name: 'Profile',
-        meta: {
-          canTo: true,
-          hidden: true,
-          noTagsView: false,
-          icon: 'ep:user',
-          title: t('common.profile')
-        }
-      }
-    ]
-  },
+  // 移除个人中心路由
+  // {
+  //   path: '/user',
+  //   component: Layout,
+  //   name: 'UserInfo',
+  //   meta: {
+  //     hidden: true
+  //   },
+  //   children: [
+  //     {
+  //       path: 'profile',
+  //       component: () => import('@/views/Profile/Index.vue'),
+  //       name: 'Profile',
+  //       meta: {
+  //         canTo: true,
+  //         hidden: true,
+  //         noTagsView: false,
+  //         icon: 'ep:user',
+  //         title: t('common.profile')
+  //       }
+  //     }
+  //   ]
+  // },
   {
     path: '/dict',
     component: Layout,
