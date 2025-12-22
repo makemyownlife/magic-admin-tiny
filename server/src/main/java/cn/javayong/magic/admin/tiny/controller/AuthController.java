@@ -152,4 +152,19 @@ public class AuthController {
 
         return JSON.toJSONString(result);
     }
+
+    /**
+     * 登出接口
+     */
+    @PostMapping("/logout")
+    @ResponseBody
+    public String logout() {
+        // 模拟登出成功
+        Map<String, Object> result = new HashMap<>();
+        result.put("code", "0");
+        result.put("data", true);
+        result.put("msg", "登出成功");
+
+        return JSON.toJSONString(result);
+    }
 }
