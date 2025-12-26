@@ -1,4 +1,3 @@
-本项目是 [magic-admin](https://github.com/makemyownlife/magic-admin) 项目的前端 ，基于 Vue3 + element-plus 实现 。 
 
 ## 依赖 & 运行
 
