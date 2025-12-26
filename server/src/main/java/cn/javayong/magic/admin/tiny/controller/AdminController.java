@@ -4,7 +4,6 @@ import cn.javayong.magic.admin.tiny.domain.LoginRequest;
 import cn.javayong.magic.admin.tiny.domain.LoginResponse;
 import cn.javayong.magic.admin.tiny.domain.PermissionInfoResponse;
 import com.alibaba.fastjson.JSON;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -13,9 +12,9 @@ import java.util.*;
  * 认证控制器
  */
 @RestController
-@RequestMapping("/system/auth")
+@RequestMapping("/api/system/auth")
 @CrossOrigin(origins = "*")
-public class AuthController {
+public class AdminController {
 
     /**
      * 登录接口
